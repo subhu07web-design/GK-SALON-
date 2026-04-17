@@ -1,0 +1,8 @@
+{
+  "name": "GK Salon",
+  "description": "A premium, luxurious salon experience in Hatilung. Style that defines you. Experts in modern hair styling and grooming.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": []
+}
