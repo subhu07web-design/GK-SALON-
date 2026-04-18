@@ -15,7 +15,8 @@ import {
   MessageCircle,
   Sparkles,
   CheckCircle2,
-  Award
+  Award,
+  Play
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -64,12 +65,12 @@ const TESTIMONIALS = [
 ];
 
 const GALLERY = [
+  "https://www.pexels.com/download/video/3997187/",
   "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=600",
   "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&q=80&w=600",
   "https://images.unsplash.com/photo-1621605815841-aa33c6ce6621?auto=format&fit=crop&q=80&w=600",
   "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=600",
   "https://images.unsplash.com/photo-1595476108010-b4d1f8bc2b1f?auto=format&fit=crop&q=80&w=600",
-  "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&q=80&w=600",
 ];
 
 // --- Components ---
@@ -169,13 +170,27 @@ const Navbar = () => {
 
 const Hero = () => {
   return (
-    <section id="home" className="relative h-[90vh] md:h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with Overlay */}
+    <section id="home" className="relative h-[90vh] md:h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* Fallback Background Image (Static) */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[10s] scale-110 motion-safe:hover:scale-100 opacity-80"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 scale-105"
         style={{ backgroundImage: `url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=2000')` }}
       />
-      <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/20 to-black/80" />
+
+      {/* Cinematic Background Video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover opacity-85 z-0"
+      >
+        <source src="https://res.cloudinary.com/duy2rot8s/video/upload/f_auto,q_auto,w_1920/v1776507712/9737998-uhd_3840_2160_24fps_kta2zb.mp4" type="video/mp4" />
+      </video>
+
+      {/* Overlays for Contrast & Depth - Lightened for more brightness */}
+      <div className="absolute inset-0 bg-linear-to-b from-black/50 via-transparent to-black/70 z-1" />
       
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-5xl pt-16">
@@ -383,18 +398,32 @@ const Gallery = () => {
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading subtitle="Captured Elegance" title="Salon Gallery" />
         <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-4 lg:gap-6">
-          {GALLERY.map((img, i) => (
-            <motion.div 
-              key={i}
-              whileHover={{ scale: 1.05 }}
-              className="relative aspect-square overflow-hidden cursor-pointer group"
-            >
-              <img src={img} alt="Gallery" className="w-full h-full object-cover transition-all duration-700" referrerPolicy="no-referrer" />
-              <div className="absolute inset-0 bg-gold-dark/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <Scissors className="text-white" size={32} />
-              </div>
-            </motion.div>
-          ))}
+          {GALLERY.map((item, i) => {
+            const isVideo = item.includes('video') || item.includes('.mp4');
+            return (
+              <motion.div 
+                key={i}
+                whileHover={{ scale: 1.05 }}
+                className="relative aspect-square overflow-hidden cursor-pointer group"
+              >
+                {isVideo ? (
+                  <video 
+                    src={item} 
+                    className="w-full h-full object-cover transition-all duration-700" 
+                    autoPlay 
+                    muted 
+                    loop 
+                    playsInline
+                  />
+                ) : (
+                  <img src={item} alt="Gallery" className="w-full h-full object-cover transition-all duration-700" referrerPolicy="no-referrer" />
+                )}
+                <div className="absolute inset-0 bg-gold-dark/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  {isVideo ? <Play className="text-white" size={32} fill="currentColor" /> : <Scissors className="text-white" size={32} />}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
