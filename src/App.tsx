@@ -66,11 +66,12 @@ const TESTIMONIALS = [
 
 const GALLERY = [
   "https://www.pexels.com/download/video/3997187/",
-  "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=600",
-  "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&q=80&w=600",
-  "https://images.unsplash.com/photo-1621605815841-aa33c6ce6621?auto=format&fit=crop&q=80&w=600",
-  "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=600",
-  "https://images.unsplash.com/photo-1595476108010-b4d1f8bc2b1f?auto=format&fit=crop&q=80&w=600",
+  "https://res.cloudinary.com/duy2rot8s/image/upload/v1776573172/gk_salon_img4_tzfip4.jpg",
+  "https://res.cloudinary.com/duy2rot8s/image/upload/v1776573166/gk_salon_img2_eakyxr.jpg",
+  "https://res.cloudinary.com/duy2rot8s/video/upload/v1776573087/gk_salon_vid_1_dtzyrg.mp4",
+  "https://res.cloudinary.com/duy2rot8s/image/upload/v1776573034/gk_salon_img5_gbsj4h.jpg",
+  "https://res.cloudinary.com/duy2rot8s/image/upload/v1776573033/gk_salon_img_7_merjbq.jpg",
+  "https://res.cloudinary.com/duy2rot8s/image/upload/v1776573029/gk_salon_img_6_duvx6y.jpg",
 ];
 
 // --- Components ---
@@ -324,7 +325,7 @@ const About = () => {
             <div className="absolute -top-4 -left-4 w-32 h-32 border-t-2 border-l-2 border-gold-light z-0" />
             <div className="absolute -bottom-4 -right-4 w-32 h-32 border-b-2 border-r-2 border-gold-light z-0" />
             <img 
-              src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=800" 
+              src="https://res.cloudinary.com/duy2rot8s/image/upload/v1776573159/gk_salon_img1_f6imht.jpg" 
               alt="Salon Interior" 
               className="relative z-10 w-full rounded-none hover:scale-[1.02] transition-all duration-700 shadow-2xl"
               referrerPolicy="no-referrer"
